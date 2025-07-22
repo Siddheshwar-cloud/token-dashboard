@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Elite Token Dashboard</title>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <!-- Background -->
+  <div id="particles-js"></div>
+
+  <!-- Floating Logo -->
+  <img id="ethLogo" src="https://as1.ftcdn.net/v2/jpg/08/53/72/74/1000_F_853727424_EDbh5UdE4xcMsNrYhZzsI2mq00rMYlsP.jpg" alt="ETH" />
+
+  <!-- Main Container -->
+  <div id="dashboardContainer" class="animate-panel">
+    <h1 id="mainHeading">🚀 Elite Token Dashboard</h1>
+
+    <!-- Theme Toggle -->
+    <div class="toggleWrapper">
+      <label class="switch">
+        <input type="checkbox" id="themeToggle" />
+        <span class="slider round"></span>
+      </label>
+      
+    </div>
+
+    <!-- Wallet Panel -->
+    <div id="walletPanel" class="animate-panel">
+      <p><strong>💎 Wallet:</strong> <span id="userAddress">Not connected</span></p>
+      <p><strong>💰 ETH:</strong> <span id="ethBalance">-</span></p>
+      <p><strong>🪙 Token:</strong> <span id="tokenBalance">-</span></p>
+      <p><strong>🌐 ENS:</strong> <span id="ensName">-</span></p>
+      <img id="ensAvatar" src="" alt="ENS Avatar" style="display:none; width:60px; height:60px; border-radius:50%; margin-top:10px;" />
+
+      <div class="actionButtons">
+        <button onclick="copyAddress()">📋 Copy Wallet</button>
+        <button onclick="toggleQR()">🔳 QR Code</button>
+      </div>
+
+      <div id="qrPopup"></div>
+
+      <!-- Send Token -->
+      <div id="sendPanel">
+        <h3>🚀 Send Token</h3>
+        <input type="text" id="sendTo" placeholder="Recipient Address (0x...)" />
+        <input type="text" id="sendAmount" placeholder="Amount to Send" />
+        <button onclick="sendToken()">📤 Send Token</button>
+      </div>
+    </div>
+
+    <!-- Transactions -->
+    <div id="txPanel" class="animate-panel">
+      <h3>📜 Recent Transactions</h3>
+      <div id="txList">Loading...</div>
+    </div>
+
+    <!-- Connect Button -->
+    <button id="connectBtn" onclick="connectAndLoad()">🔗 Connect Wallet</button>
+  </div>
+
+  <!-- Audio -->
+  <audio id="connectSound" src="https://assets.mixkit.co/sfx/download/mixkit-game-ball-tap-2073.wav"></audio>
+  <audio id="sendSound" src="https://assets.mixkit.co/sfx/download/mixkit-confirmation-tone-2867.wav"></audio>
+
+  <script src="script.js"></script>
+</body>
+</html>
